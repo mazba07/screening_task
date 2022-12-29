@@ -5,7 +5,7 @@
             <div class="shadow-block">
                 <h4 class="text-center mt-2 text-success">Add new vendor</h4>
                 <hr>
-                <form class="row g-3 needs-validation" novalidate>
+                <form  class="row g-3 needs-validation" novalidate>
                     <div class="col-12">
                         <label class="form-label">Vendor name*</label>
                         <input type="text" name="vendor_name" class="form-control shadow-none" required>
@@ -40,7 +40,7 @@
 
                     <div class="col-12">
                         <label class="form-label">Office address*</label>
-                        <textarea class="form-control shadow-none" rows="3" required></textarea>
+                        <textarea name="office_address" class="form-control shadow-none" rows="3" required></textarea>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
