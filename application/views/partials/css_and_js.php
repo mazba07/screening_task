@@ -9,12 +9,16 @@
       href="https://placeimg.com/120/120/any"/>
 
 
-<link href="<?php echo base_url('public/resources/plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css') ?>"
+<link href="<?php echo base_url('public/resources/plugin/bootstrap-5.2.0-dist/css/bootstrap.min.css') ?>"
       rel="stylesheet">
-<link href="<?php echo base_url('public/resources/plugin/font-awesome-4.7.0 2/css/font-awesome.min.css') ?>"
+<link href="<?php echo base_url('public/resources/plugin/font-awesome-6-pro-main/css/all.min.css') ?>"
       rel="stylesheet">
 <link href="<?php echo base_url('public/resources/css/core-style.css') ?>" rel="stylesheet">
 
+<script src="<?php echo base_url('public/resources/plugin/jquery-1.12.4-dist/jquery-1.12.4.min.js') ?>"></script>
+<script src="<?php echo base_url('public/resources/plugin/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js') ?>"></script>
+
+<script src="<?php echo base_url('public/resources/js/core-script.js') ?>"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +30,3 @@
     var baseUrl = "<?php echo base_url()?>";
 </script>
 
-<script src="<?php echo base_url('public/resources/plugin/jquery-1.12.4-dist/jquery-1.12.4.min.js') ?>"></script>
-<script src="<?php echo base_url('public/resources/plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js') ?>"></script>
-
-<script src="<?php echo base_url('public/resources/js/core-script.js') ?>"></script>

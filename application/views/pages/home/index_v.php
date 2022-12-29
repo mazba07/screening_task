@@ -1,67 +1,124 @@
-<div class="row" style="margin-top: 60px">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <ol>
-            <li>Change base url (Now its is look like: <code>$config['base_url'] = '';</code> )</li>
-            <li>Set database configuration but database library has been loaded already
-                (Now its is look like: <code>$autoload['libraries'] = array('database', 'session', 'form_validation');</code> )
-            </li>
-            <li>
-                A core controller had been mad named: "My_Controller"
-            </li>
-            <li>
-                A basic model has been mad name "My_model"
-            </li>
-            <li>
-                A basic helper has been mad name "my_helper"
-            </li>
-            <li>A basic template has been mad. all template file in partials folder under views</li>
-            <li>Some plugin has been added inside resource folder</li>
-            <li>
-                auto load file history
-                <br>
-                ===============
-                <p><code>$autoload['libraries'] = array('database', 'session', 'form_validation');</code></p>
-                <p><code>$autoload['helper'] = array('url', 'my_helper');</code>
-                </p>
-                <p><code>$autoload['model'] = array('My_model');</code>
-                </p>
-            </li>
-            <li>
-                Create (.htaccess)
-                <pre>
-                    <code>
-RewriteEngine on
-RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteCond %{SCRIPT_FILENAME} !-f
-RewriteCond $1 !^(index\.php|public|robots\.txt)
-RewriteRule ^(.*)$ ./index.php/$1 [L]
-                    </code>
-                </pre>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-12 col-md-8 offset-md-2">
 
-                ==========================
-                For API development
+            <div class="shadow-block">
+                <h4 class="text-center mt-2 text-success">Add new vendor</h4>
+                <hr>
+                <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-12">
+                        <label class="form-label">Vendor name*</label>
+                        <input type="text" name="vendor_name" class="form-control shadow-none" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide Vendor name.
+                        </div>
+                    </div>
 
-                <pre>
-                    <code>
-                    RewriteEngine on
-RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteCond %{SCRIPT_FILENAME} !-f
-RewriteCond $1 !^(index\.php|public|robots\.txt)
-RewriteRule ^(.*)$ ./index.php/$1 [L]
-                    
-                    
-Header always set Access-Control-Allow-Origin "*"
-Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
-Header always set Access-Control-Max-Age "1000"
-Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
+                    <div class="col-6">
+                        <label class="form-label">Phone number*</label>
+                        <input type="number" name="phone_number" class="form-control shadow-none" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a valid Phone number.
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Email address*</label>
+                        <input type="email" name="email_address" class="form-control shadow-none" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a valid Email address.
+                        </div>
+                    </div>
 
-RewriteEngine On
-RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule ^(.*)$ $1 [R=200,L]
-                    <code>
-                </pre>
+                    <div class="col-12">
+                        <label class="form-label">Office address*</label>
+                        <textarea class="form-control shadow-none" rows="3" required></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide Office address.
+                        </div>
+                    </div>
 
-            </li>
-        </ol>
+                    <div class="col-12 text-end">
+                        <button class="btn btn-secondary" type="submit">Submit</button>
+                    </div>
+                </form>
+
+
+                <h4 class="text-center mt-4 text-danger">Vendor</h4>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Vendor nam</th>
+                                <th scope="col">Phone number</th>
+                                <th scope="col">Email address</th>
+                                <th scope="col">Office address</th>
+                                <th scope="col">View</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Otto</td>
+                                <td>Otto</td>
+                                <td>Otto</td>
+                                <td>Otto</td>
+                                <td>
+                                    <a class="btn btn-info btn-sm text-white">View</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-warning btn-sm text-white">Edit</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm text-white">Delete</a>
+                                </td>
+                            </tr>
+                            
+                            
+                            
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
