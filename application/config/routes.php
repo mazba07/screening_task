@@ -54,4 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['vendor-details/(:num)'] = 'Home/display_vendor_details/$1';
+$route['purchase'] = 'Purchase';
 

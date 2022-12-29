@@ -81,7 +81,7 @@ class Home extends My_Controller
                     'office_address' => $this->input->post('office_address')
                 );
 
-                $this->My_model->update($table_name='vendor', $post_data, $options = array('vendor_id'=>$vendor_id));
+                $this->My_model->update($table_name = 'vendor', $post_data, $options = array('vendor_id' => $vendor_id));
 
                 $this->render('vendor/update_vendor_success_v');
             }
@@ -90,5 +90,10 @@ class Home extends My_Controller
         }
     }
 
-    
+    public function delete_vendor()
+    {
+        $vendor_id = $this->input->post('vendor_id');
+        $this->My_model->delete($table_name = 'vendor', $options = array('vendor_id' => $vendor_id));
+        $this->send_data(1, "ok");
+    }
 }

@@ -1,10 +1,5 @@
+// Vendor CRUD start
 $(function () {
-
-});
-
-$(function () {
-    loadAllVendor();
-
     function loadAllVendor() {
         var url = baseUrl + "Home/all_vendor";
         $.ajax({
@@ -13,7 +8,7 @@ $(function () {
             data: {},
             dataType: "JSON",
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 if (data.status.success === 1) {
                     $("#allVendor").html(data.result);
                     $('#allVendorTable').DataTable({
@@ -26,6 +21,8 @@ $(function () {
             }
         });
     }
+    loadAllVendor();
+
 
     $('#vendorFormForNewVendor').on('submit', function (event) {
         if (!event.target.checkValidity()) {
@@ -40,7 +37,7 @@ $(function () {
                 data: $('#vendorFormForNewVendor').serialize(),
                 dataType: "JSON",
                 success: function (data) {
-                    console.log(data);
+                    // console.log(data);
                     if (data.status.success === 1) {
                         $('#vendorFormForNewVendor')
                             .trigger("reset")
@@ -69,30 +66,98 @@ $(function () {
 
     $(document).on('click', '.deleteVendor', function () {
         var vendor_id = $(this).attr("data-vendor_id");
-        console.log(vendor_id);
+        // console.log(vendor_id);
         swal({
             title: "Are you sure?",
-            text: "You will not be able to recover this vendor!",
+            text: "Your will not be able to recover this Vendor!",
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
             confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        },
-            function (isConfirm) {
-                if (isConfirm) {
-                    swal("Deleted!", "Vendor has been deleted.", "success");
-                    
+            closeOnConfirm: false
+        }, function () {
+            swal("Deleted!", "Vendor has been deleted.", "success");
 
-                } else {
-                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+            var url = baseUrl + "Home/delete_vendor";
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: {
+                    "vendor_id": vendor_id
+                },
+                dataType: "JSON",
+                success: function (data) {
+                    // console.log(data);
+                    if (data.status.success === 1) {
+                        loadAllVendor();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log('Error adding data');
                 }
             });
+        });
+    });
+});
+// Vendor CRUD End
 
+// Purchase start
+$(function () {
+
+    function loadAllPurchase() {
+        var url = baseUrl + "Purchase/all_purchase";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            dataType: "JSON",
+            success: function (data) {
+                // console.log(data);
+                if (data.status.success === 1) {
+                    $("#allPurchase").html(data.result);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('Error adding data');
+            }
+        });
+    }
+    loadAllPurchase();
+
+    $('#purchaseFormForNewItem').on('submit', function (event) {
+        var url = baseUrl + "Purchase/add_new_purchase";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: $('#purchaseFormForNewItem').serialize(),
+            dataType: "JSON",
+            success: function (data) {
+                // console.log(data);
+                if (data.status.success === 1) {
+                    loadAllPurchase();
+
+                    $('#purchaseFormForNewItem')
+                        .trigger("reset");
+
+
+                    // =============
+                    const toastLiveExample = document.getElementById('liveToast')
+                    const toast = new bootstrap.Toast(toastLiveExample)
+                    toast.show()
+                    // =============
+
+                    $('#errorPurchaseFormForNewItem').html("");
+
+                } else {
+                    var erorResult = '<div class="alert alert-danger">' + data.status.message + '</div>';
+                    $('#errorPurchaseFormForNewItem').html(erorResult);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('Error adding data');
+            }
+        });
     });
 
-
-
 });
+
