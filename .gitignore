@@ -1,0 +1,34 @@
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
+
+
+# npm
+node_modules
+npm-debug.log
+*.log
+*.gz
+
+# development
+.idea
+nbproject
+dump.rdb
+
+# Coveralls
+coverage
+
+# Benchmarking
+benchmarks/graphs
+/nbproject/private/
+
+/public/assets/post-photo
