@@ -4,3 +4,8 @@
     -webkit-box-shadow: 0 2px 2px 1px rgb(158 158 158 / 40%);
     box-shadow: 0 2px 2px 1px rgb(158 158 158 / 40%);
 }
+
+.toasts-img-tick {
+    width: 10px;
+    height: 10px;
+}

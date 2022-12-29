@@ -5,7 +5,10 @@
             <div class="shadow-block">
                 <h4 class="text-center mt-2 text-success">Add new vendor</h4>
                 <hr>
-                <form  class="row g-3 needs-validation" novalidate>
+
+                <div id="errorVendorFormForNewVendor"></div>
+
+                <form id="vendorFormForNewVendor" onsubmit="return false" class="row g-3 needs-validation" novalidate>
                     <div class="col-12">
                         <label class="form-label">Vendor name*</label>
                         <input type="text" name="vendor_name" class="form-control shadow-none" required>
@@ -55,70 +58,25 @@
                 </form>
 
 
-                <h4 class="text-center mt-4 text-danger">Vendor</h4>
+                <h4 class="text-center mt-4 text-danger">Our vendor</h4>
                 <hr>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Vendor nam</th>
-                                <th scope="col">Phone number</th>
-                                <th scope="col">Email address</th>
-                                <th scope="col">Office address</th>
-                                <th scope="col">View</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Otto</td>
-                                <td>Otto</td>
-                                <td>Otto</td>
-                                <td>Otto</td>
-                                <td>
-                                    <a class="btn btn-info btn-sm text-white">View</a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-warning btn-sm text-white">Edit</a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-danger btn-sm text-white">Delete</a>
-                                </td>
-                            </tr>
-                            
-                            
-                            
-                        </tbody>
-
-                    </table>
-                </div>
-
+                <div id="allVendor"></div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-        'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-</script>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="<?php echo base_url('public/resources/images/Green_tick.svg.png')?>" class="rounded me-2 toasts-img-tick" alt="...">
+            <strong class="me-auto">Company name</strong>
+            <small>1 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            New vendor has been added.
+        </div>
+    </div>
+</div>
